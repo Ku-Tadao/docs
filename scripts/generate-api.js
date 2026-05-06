@@ -254,18 +254,38 @@ const rcp = window.rcp
 \`\`\``);
 generateMarkdownForInterface('Socket', 'socket.md', 'socket', `This namespace helps you to observe specific LCU APIs without creating a new WebSocket.
 You cannot get it directly from \`window\`, instead use the context of the [\`init\` entry point](../guide/javascript-plugin#plugin-entry-points).`);
-generateMarkdownForInterface('PluginFS', 'plugin-fs.md', 'PluginFS', `This API allows plugins to access **their own directory** and perform some basic file operations.
+generateMarkdownForInterface('PluginFS', 'plugin-fs.md', 'context.fs', `\`context.fs\` gives a folder plugin asynchronous access to files inside its own plugin directory.
+
+It is intended for plugin-local data such as settings, generated cache files, and small text assets that need to persist across League Client restarts.
 
 ::: warning
 
-**Top-level** plugin is not allowed since they don't own a directory.
+\`context.fs\` is only available to folder plugins:
 
-This API currently does not support calls in **remote** script.
+\`\`\`text
+plugins/my-plugin/index.js
+plugins/@author/my-plugin/index.js
+\`\`\`
+
+Top-level plugins such as \`plugins/my-plugin.js\` do not own a directory, so they do not receive \`context.fs\`.
 
 :::
 
 ::: tip
 
-All paths passed into this API are relative to the root directory of your plugin.
+All paths are relative to the plugin's own root directory. A plugin cannot read, write, list, stat, or remove another plugin's files.
 
-:::`);
+:::
+
+## Security model
+
+PluginFS is scoped by the native renderer process, not just by JavaScript helpers.
+
+- A plugin receives access only to its own folder.
+- Path traversal such as \`../other-plugin/file.txt\` is rejected.
+- Absolute paths are rejected.
+- Symlinks and reparse-point escapes are rejected.
+- The native grant function is hidden from plugins after preload setup.
+- Operations run asynchronously through a bounded native worker pool.
+
+Plugins that need to communicate with each other should use JavaScript APIs, events, or shared in-memory coordination instead of editing each other's files.`);

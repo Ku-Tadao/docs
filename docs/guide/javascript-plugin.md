@@ -68,6 +68,7 @@ export function init(context) {
 ```
 - See [`context.rcp`](../runtime-api/rcp) to use RiotClientPlugin hooks from this `context`.
 - See [`context.socket`](../runtime-api/socket.md) to use built-in socket observation.
+- See [`context.fs`](../runtime-api/plugin-fs.md) to persist files inside your plugin folder.
 
 As of v1.1.0, you no longer need to put your load script in the `load` event of `window`.
 Instead, you can put in the `load` entry, it will be called even after window is loaded.
@@ -91,5 +92,6 @@ pages to get more power out of your plugins.
 - [Module System](./module-system) - Learn more about module system
 - [CSS Theme](./css-theme) - Build your theme with CSS
 - [Assets Handling](./asset-handling) - Add custom content to your plugins
+- [PluginFS Test Plugins](./pluginfs-test-plugin) - Build a small local-data plugin for testing
 - [LCU Request](./lcu-request) - Some guides helps you to work with LCU
 - [Runtime API](../runtime-api/) - Useful built-in APIs to use in your plugins

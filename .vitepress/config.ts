@@ -111,6 +111,7 @@ function sidebar() {
         { text: 'Module System', link: '/guide/module-system' },
         { text: 'CSS Theme', link: '/guide/css-theme' },
         { text: 'Asset Handling', link: '/guide/asset-handling' },
+        { text: 'PluginFS Test Plugins', link: '/guide/pluginfs-test-plugin' },
         { text: 'LCU Request', link: '/guide/lcu-request' },
         { text: 'Npm Compatibility', link: '/guide/npm-compatibility' },
       ]
@@ -124,7 +125,7 @@ function sidebar() {
         { text: '[CommandBar]', link: '/runtime-api/command-bar' },
         { text: '[DataStore]', link: '/runtime-api/data-store' },
         { text: '[Effect]', link: '/runtime-api/effect' },
-        { text: '[PluginFS]', link: '/runtime-api/plugin-fs' },
+        { text: 'context.fs', link: '/runtime-api/plugin-fs' },
         { text: '[Toast]', link: '/runtime-api/toast' },
         { text: '[rcp] context.rcp', link: '/runtime-api/rcp' },
         { text: 'context.socket', link: '/runtime-api/socket' },
