@@ -12,6 +12,8 @@ export default defineConfig({
   title: "Pengu Loader" + (isBeta ? ' Beta' : ''),
   description: "Unleash the power of Customization from your League of Legends Client.",
 
+  base: process.env.GITHUB_REPOSITORY === 'Ku-Tadao/docs' ? '/docs/' : '/',
+
   lang: 'en',
   appearance: isBeta ? undefined : 'dark',
   lastUpdated: true,
